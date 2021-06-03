@@ -78,7 +78,7 @@ console.log(emailadresses);
 // op welke plek in de lijst dit emailadres staat. Dit gebeurt helaas wel vaker. Schrijf een functie die drie parameters verwacht:
 // een array met emailadressen, het oude emailadres dat vervangen moet worden, en het nieuwe emailadres.
 // TIP: schrijf 'm eerst zoals je hem zou toepassen op bovenstaande array en schrijf die code dan om naar een functie
-console.log('-----------3b------------');
+console.log('-----------4------------');
 function updateEmailAdress(emailadresses, oldEmail, newEmail){
     const emailPos = emailadresses.indexOf(oldEmail);
     emailadresses[emailPos] = newEmail;
