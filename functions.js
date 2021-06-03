@@ -8,7 +8,14 @@
 // 0 geeft false
 // 300 geeft true
 
+function isGreaterThanZero(number = 0) {
+    return number > 0;
+}
+console.log('-----------1------------');
 
+console.log(isGreaterThanZero(-3));
+console.log(isGreaterThanZero(0));
+console.log(isGreaterThanZero(300));
 
 /* Opdracht 2 */
 // Schrijf een functie die twee getallen verwacht en teruggeeft of ze, opgetelt, gróter zijn dan 100.
@@ -16,15 +23,26 @@
 // 1 en 23 geeft false
 // 8 en 92 geeft false
 // 89 en 14 geeft true
+console.log('-----------2------------');
+function togetherAreBiggerThanHundred(number1 = 0, number2 = 0) {
+    return number1 + number2 > 100;
+}
 
-
+console.log(togetherAreBiggerThanHundred(1, 23))
+console.log(togetherAreBiggerThanHundred(8, 92))
+console.log(togetherAreBiggerThanHundred(89, 14))
 
 /* Opdracht 3 */
 // Schrijf een functie die een zin verwacht en de eerste letter uit de zin omzet naar een hoofdletter.
 // ---- Verwachte uitkomsten:
 // "de kat krabt de krullen van de trap" geeft "De kat krabt de krullen van de trap"
 // "programmeren is super leuk!" geeft "Programmeren is super leuk!"
-
+console.log('-----------3------------');
+function capitalizeFirstLetter(sentence = '') {
+    return sentence.charAt(0).toUpperCase() + sentence.slice(1)
+}
+console.log(capitalizeFirstLetter('de kat krabt de krullen van de trap geeft!'));
+console.log(capitalizeFirstLetter('programmeren is super leuk!'));
 
 
 /* Opdracht 4 */
@@ -34,8 +52,15 @@
 // undefined geeft undefined
 // "Hallo" geeft string
 // [1, 2, 3] geeft object (ja echt!)
+console.log('-----------4------------');
+function getDataType(object) {
+    return typeof object;
+}
 
-
+console.log(getDataType({ name: 1 }));
+console.log(getDataType(undefined));
+console.log(getDataType("Hallo"));
+console.log(getDataType([1, 2, 3]));
 
 /* Opdracht 5 */
 // Schrijf een functie die een array van strings verwacht. Hoe lang die array is weet je niet van tevoren - het zouden zomaar 100 entries kunnen zijn.
@@ -43,6 +68,16 @@
 // ---- Verwachte uitkomsten:
 // ["abra", "cadabra"] geeft "abracadabra"
 // ["a", "b", "c", "d", "e"] geeft "abcde"
+console.log('-----------5------------');
+function concat(arr) {
+    let concattedString = '';
+    for (let i = 0; i < arr.length; i++) {
+        concattedString += arr[i];
+    }
+    return concattedString;
+}
+console.log(concat(["abra", "cadabra"]));
+console.log(concat(["a", "b", "c", "d", "e"]));
 
 
 
@@ -52,7 +87,17 @@
 // "Frontend web development" geeft "development"
 // "De eindopdracht telt voor 30 ECTS" geeft "eindopdracht"
 // "Een API staat voor Application Programming Interface. Met deze technologie zul je vaak gaan werken." geeft "technologie"
+console.log('-----------5------------');
+function getLongestWord(string) {
+    var longestWord = string.split(' ').reduce((longest, current) => {
+        return current.length >= longest.length ? current : longest;
+    }, "");
+    return longestWord;
+}
 
+console.log(getLongestWord('Frontend web development'));
+console.log(getLongestWord('De eindopdracht telt voor 30 ECTS'));
+console.log(getLongestWord('Een API staat voor Application Programming Interface. Met deze technologie zul je vaak gaan werken.'));
 
 // -------------------------------  LEVEL 2
 
@@ -62,7 +107,13 @@
 // ---- Verwachte uitkomsten:
 // "koekje" geeft "ejkeok"
 // "vrienden" geeft "nedneirv"
+console.log('-----------6a------------');
+function reverseString(string) {
+    return (string === '') ? '' : reverseString(string.substr(1)) + string.charAt(0);
 
+}
+console.log(reverseString('koekje'));
+console.log(reverseString('vrienden'));
 
 
 // 6b. Schrijf een functie die een woord verwacht checkt of dit woord een palindroom is. Een palindroom is een
@@ -72,7 +123,14 @@
 // "lepel" geeft true
 // "madam" geeft true
 // "vrienden" geeft false
+console.log('-----------6b------------');
+function isPalindrome(string) {
+    return string === reverseString(string);
+}
 
+console.log(isPalindrome('lepel'));
+console.log(isPalindrome('madam'));
+console.log(isPalindrome('vrienden'));
 
 
 /* Opdracht 7 */
@@ -81,7 +139,12 @@
 // ---- Verwachte uitkomsten:
 // "Hans en marietje lopen naar de supermarkt" en "e" geeft 6
 // "Hans is zijn mondkapje vergeten" en "a" geeft 2
-
+console.log('-----------7------------');
+function getLetterAmountInString(string, letter) {
+    return string.split(letter).length - 1;
+}
+console.log(getLetterAmountInString('Hans en marietje lopen naar de supermarkt', 'e'));
+console.log(getLetterAmountInString('Hans is zijn mondkapje vergeten', 'a'));
 
 
 /* Opdracht 8 */
@@ -90,6 +153,18 @@
 // ---- Verwachte (mogelijke) uitkomsten:
 // iizdX7Ax
 // gajxBhGs
+console.log('-----------8------------');
+function generateId(length) {
+    let string = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charAmount = characters.length;
+    for (let i = 0; i < length; i++) {
+        string += characters.charAt(Math.floor(Math.random() * charAmount));
+    }
+    return string;
+}
+console.log(generateId(8));
+console.log(generateId(8));
 
 
 
@@ -101,7 +176,19 @@
 // ---- Verwachte uitkomsten:
 // lastEntry([3, 6, 9, 17, 4, 6, 25, 8]) geeft 8
 // lastEntry([46, 65, 34, 204, 190, 89], 3) geeft [204, 190, 89]
-
+console.log('-----------9------------');
+function getLastArrayValues(arr, amount = 1) {
+    let result = [];
+    if (arr) {
+        for (let i = 0; i < amount; i++) {
+            result.push(arr[i]);
+        }
+        return result;
+    }
+    return 'oi, gimme some correct values geeza'
+}
+console.log(getLastArrayValues([3, 6, 9, 17, 4, 6, 25, 8]));
+console.log(getLastArrayValues([46, 65, 34, 204, 190, 89], 3));
 
 
 /* Opdracht 10 */
@@ -141,6 +228,20 @@
 // 29
 // FizzBuzz
 // etc.
+function fizzBuzz(amount) {
+    for (var i = 1; i < amount; i++) {
+        if (i % 15 == 0) {
+            console.log("FizzBuzz");
+        } else if (i % 3 == 0) {
+            console.log("Fizz");
+        } else if (i % 5 == 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        }
+    }
+}
+fizzBuzz(101);
 
 
 
@@ -150,4 +251,12 @@
 // ["Nick", "Nova", "Mitchel", "Arjen"] geeft "Hoi Nick, Nova, Mitchel en Arjen!"
 // ["Piet", "Henk"] geeft "Hoi Piet en Henk!"
 // ["A", "B", "C", "D", "E", "F"] geeft "Hoi A, B, C, D, E en F!"
-
+function greeter(arr) {
+    let string = 'hoi';
+    for (let index = 0; index < arr.length; index++) {
+        string += (index === arr.length -1) ? ' en ' + arr[index] + '!' : ' ' + arr[index];
+    }
+    return string;
+}
+console.log(greeter(["Nick", "Nova", "Mitchel", "Arjen"] ));
+console.log(greeter(["A", "B", "C", "D", "E", "F"] ));
