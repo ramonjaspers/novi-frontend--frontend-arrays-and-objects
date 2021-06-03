@@ -228,6 +228,8 @@ console.log(getLastArrayValues([46, 65, 34, 204, 190, 89], 3));
 // 29
 // FizzBuzz
 // etc.
+console.log('-----------10------------');
+
 function fizzBuzz(amount) {
     for (var i = 1; i < amount; i++) {
         if (i % 15 == 0) {
